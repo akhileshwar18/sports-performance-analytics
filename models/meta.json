@@ -1,0 +1,112 @@
+{
+  "FEATURES": [
+    "Age",
+    "Weight_kg",
+    "Training_Experience_Years",
+    "Training_Hours_Per_Week",
+    "VO2_Max_ml_kg_min",
+    "Sprint_Speed_m_s",
+    "Reaction_Time_ms",
+    "Strength_Test_Score",
+    "Resting_Heart_Rate_bpm",
+    "Sleep_Hours_Per_Day",
+    "Training_Days_Per_Week",
+    "Recovery_Heart_Rate_bpm"
+  ],
+  "RF_FEATURES": [
+    "Age",
+    "Weight_kg",
+    "Training_Experience_Years",
+    "Training_Hours_Per_Week",
+    "VO2_Max_ml_kg_min",
+    "Sprint_Speed_m_s",
+    "Reaction_Time_ms",
+    "Strength_Test_Score",
+    "Resting_Heart_Rate_bpm",
+    "Sleep_Hours_Per_Day",
+    "Training_Days_Per_Week",
+    "Recovery_Heart_Rate_bpm",
+    "Cluster"
+  ],
+  "LR_FEATURES": [
+    "Age",
+    "Weight_kg",
+    "Training_Days_Per_Week",
+    "Sleep_Hours_Per_Day",
+    "Cluster",
+    "Predicted_Overall_Performance_%"
+  ],
+  "best_k": 2,
+  "silhouette_scores": {
+    "2": 0.9143334272407458,
+    "3": 0.8944043657636842,
+    "4": 0.8901658544869878,
+    "5": 0.8846350723112646,
+    "6": 0.8840290003454895
+  },
+  "rf_metrics": {
+    "MAE": 1.03,
+    "RMSE": 2.03,
+    "R2": 0.984
+  },
+  "lr_metrics": {
+    "MAE": 2.875,
+    "RMSE": 3.959,
+    "R2": 0.983
+  },
+  "feature_importance": [
+    {
+      "Feature": "Training_Hours_Per_Week",
+      "Importance": 0.25015093799752747
+    },
+    {
+      "Feature": "Reaction_Time_ms",
+      "Importance": 0.25013754913302083
+    },
+    {
+      "Feature": "Strength_Test_Score",
+      "Importance": 0.25000031227056213
+    },
+    {
+      "Feature": "Sprint_Speed_m_s",
+      "Importance": 0.24967972044834982
+    },
+    {
+      "Feature": "Age",
+      "Importance": 3.14801505398643e-05
+    },
+    {
+      "Feature": "VO2_Max_ml_kg_min",
+      "Importance": 0.0
+    },
+    {
+      "Feature": "Training_Experience_Years",
+      "Importance": 0.0
+    },
+    {
+      "Feature": "Weight_kg",
+      "Importance": 0.0
+    },
+    {
+      "Feature": "Resting_Heart_Rate_bpm",
+      "Importance": 0.0
+    },
+    {
+      "Feature": "Sleep_Hours_Per_Day",
+      "Importance": 0.0
+    },
+    {
+      "Feature": "Training_Days_Per_Week",
+      "Importance": 0.0
+    },
+    {
+      "Feature": "Recovery_Heart_Rate_bpm",
+      "Importance": 0.0
+    },
+    {
+      "Feature": "Cluster",
+      "Importance": 0.0
+    }
+  ],
+  "n_athletes": 4120
+}
