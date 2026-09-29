@@ -1,107 +1,364 @@
-# 🏅 Athlete Performance Analytics
+# 🏅 Sports Performance Analytics & Athlete Segmentation
 
-A Streamlit app around a 3-stage ML pipeline:
+### 🤖 Machine Learning-Based Athlete Analysis, Performance Prediction & Segmentation
 
-**K-Means clustering → Random Forest (performance score) → Linear Regression (medal chance)**,
-plus a rule-based training-recommendation engine.
+> A machine learning project that analyzes athlete performance data, groups athletes based on similar characteristics, predicts overall performance, estimates medal chance, and provides personalized training recommendations.
 
-## Project structure
+---
 
+## 🌟 Project Overview
+
+**Sports Performance Analytics & Athlete Segmentation** is a machine learning application designed to analyze different aspects of athlete performance.
+
+The system uses athlete information such as:
+
+* 🏃 Training experience
+* ⏱️ Training hours
+* 🫁 VO₂ Max
+* ⚡ Sprint speed
+* 🧠 Reaction time
+* 💪 Strength
+* ❤️ Resting heart rate
+* 😴 Sleep
+* 🔄 Recovery heart rate
+* 📅 Training days
+
+The system processes these inputs and provides:
+
+**Athlete Data → K-Means Grouping → Random Forest Performance Prediction → Linear Regression Medal Chance → Recommendations**
+
+---
+
+## 🎯 Objectives
+
+* Analyze athlete performance using machine learning.
+* Group athletes with similar performance characteristics.
+* Predict an athlete's overall performance score.
+* Estimate the athlete's medal chance.
+* Provide simple training recommendations.
+* Present the results through an interactive web application.
+
+---
+
+## 🧠 Machine Learning Algorithms
+
+### 1️⃣ K-Means Clustering
+
+K-Means is used for **athlete segmentation**.
+
+It groups athletes with similar performance characteristics into different groups.
+
+Example:
+
+```text
+High Performer
+Intermediate
+Developing
 ```
-sports_app/
-├── app.py                        # Streamlit app (multi-page)
-├── train_and_pickle.py           # Trains the pipeline, saves pickles + metrics
-├── Sports_analytics_file.csv     # Source dataset
+
+The best number of clusters is selected using the **Silhouette Score**.
+
+---
+
+### 2️⃣ Random Forest Regression 🌲
+
+Random Forest is used to predict:
+
+```text
+Predicted Overall Performance %
+```
+
+The model uses multiple athlete features and combines the predictions from several decision trees.
+
+---
+
+### 3️⃣ Linear Regression 📈
+
+Linear Regression is used to estimate:
+
+```text
+Predicted Medal Chance %
+```
+
+It uses selected athlete information together with the predicted performance score.
+
+---
+
+## 🔄 Project Workflow
+
+```text
+              Athlete Dataset
+                    │
+                    ▼
+             Data Preprocessing
+                    │
+                    ▼
+              Feature Scaling
+                    │
+                    ▼
+             K-Means Clustering
+                    │
+                    ▼
+            Athlete Segmentation
+                    │
+                    ▼
+          Random Forest Regression
+                    │
+                    ▼
+       Overall Performance Prediction
+                    │
+                    ▼
+           Linear Regression
+                    │
+                    ▼
+          Medal Chance Prediction
+                    │
+                    ▼
+        Personalized Recommendations
+```
+
+---
+
+## 📊 Input Features
+
+The application uses the following athlete features:
+
+| Feature             | Description                  |
+| ------------------- | ---------------------------- |
+| Age                 | Athlete's age                |
+| Weight              | Athlete's weight             |
+| Training Experience | Years of training experience |
+| Training Hours      | Weekly training hours        |
+| VO₂ Max             | Aerobic fitness measurement  |
+| Sprint Speed        | Sprint performance           |
+| Reaction Time       | Reaction speed               |
+| Strength Score      | Strength test score          |
+| Resting Heart Rate  | Heart rate at rest           |
+| Sleep Hours         | Daily sleep duration         |
+| Training Days       | Training days per week       |
+| Recovery Heart Rate | Recovery heart rate          |
+
+---
+
+## 💻 Application Features
+
+### 🎯 Athlete Prediction
+
+Enter athlete information through the interactive interface.
+
+The application provides:
+
+* 📊 Overall performance prediction
+* 🏅 Performance group
+* 🥇 Predicted medal chance
+* 💡 Training recommendations
+
+---
+
+### 📈 Model Insights
+
+The application also displays:
+
+* Number of athletes in the dataset
+* Random Forest R²
+* Linear Regression R²
+* Random Forest feature importance
+* K-Means athlete group distribution
+
+---
+
+## 🖥️ Technology Stack
+
+| Technology                   | Purpose                    |
+| ---------------------------- | -------------------------- |
+| 🐍 Python                    | Programming                |
+| 🐼 Pandas                    | Data processing            |
+| 🔢 NumPy                     | Numerical operations       |
+| 🤖 Scikit-learn              | Machine learning           |
+| 📊 Plotly                    | Interactive visualizations |
+| 🎨 Streamlit                 | Web application            |
+| 📁 Pickle                    | Saving trained models      |
+| ☁️ Streamlit Community Cloud | Public deployment          |
+
+---
+
+## 📂 Project Structure
+
+```text
+sports-performance-analytics/
+│
+├── app.py
+├── train_model.py
+├── models.pkl
+├── Sports_analytics_file.csv
 ├── requirements.txt
-├── models/                       # Generated by train_and_pickle.py
-│   ├── cluster_scaler.pkl
-│   ├── kmeans_model.pkl
-│   ├── rf_scaler.pkl
-│   ├── rf_model.pkl
-│   ├── lr_model.pkl
-│   ├── feature_medians.pkl
-│   ├── cluster_labels.pkl
-│   ├── meta.json                 # metrics + feature importance for the UI
-│   └── athlete_dataset_scored.csv
 └── README.md
 ```
 
-## Run locally
+### File Description
+
+**`app.py`**
+Main Streamlit application that provides the user interface and predictions.
+
+**`train_model.py`**
+Trains the K-Means, Random Forest, and Linear Regression models.
+
+**`models.pkl`**
+Stores the trained models and required preprocessing information.
+
+**`Sports_analytics_file.csv`**
+Dataset used for model training.
+
+**`requirements.txt`**
+Contains the Python libraries required to run the application.
+
+---
+
+## 🚀 How to Run Locally
+
+### 1. Clone the repository
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
+git clone https://github.com/YOUR-USERNAME/sports-performance-analytics.git
+```
+
+### 2. Open the project folder
+
+```bash
+cd sports-performance-analytics
+```
+
+### 3. Install the required libraries
+
+```bash
 pip install -r requirements.txt
+```
 
-# (re)generate the pickled models from the CSV — only needed once,
-# or whenever Sports_analytics_file.csv changes
-python train_and_pickle.py
+### 4. Run the Streamlit application
 
+```bash
 streamlit run app.py
 ```
 
-The app opens at `http://localhost:8501`.
+### 5. Open the application
 
-## Deploy for free — Streamlit Community Cloud (recommended)
+Streamlit will provide a local address similar to:
 
-This is the simplest way to make it public. No server management, free tier, HTTPS included.
+```text
+http://localhost:8501
+```
 
-1. **Push this folder to a public GitHub repo** (including the `models/` folder —
-   the pickles are small, ~40 KB total, so commit them rather than retraining in the cloud):
-   ```bash
-   cd sports_app
-   git init
-   git add .
-   git commit -m "Athlete performance analytics app"
-   git branch -M main
-   git remote add origin https://github.com/<your-username>/<your-repo>.git
-   git push -u origin main
-   ```
-2. Go to **[share.streamlit.io](https://share.streamlit.io)** and sign in with GitHub.
-3. Click **New app** → pick your repo/branch → set **Main file path** to `app.py`.
-4. Click **Deploy**. You'll get a public URL like
-   `https://<your-app-name>.streamlit.app` within a minute or two.
-5. Any future `git push` to `main` auto-redeploys the app.
+---
 
-That's it — free, public, and shareable with anyone.
+## ☁️ Deployment
 
-## Other deployment options
+The application can be deployed publicly using **Streamlit Community Cloud**.
 
-- **Hugging Face Spaces** (also free): create a Space → SDK: Streamlit → push this
-  folder the same way (git-based). Good alternative if you want the app listed
-  alongside ML demos.
-- **Render / Railway**: connect the GitHub repo, set the start command to
-  `streamlit run app.py --server.port $PORT --server.address 0.0.0.0`, and set the
-  build command to `pip install -r requirements.txt`. Free tiers available but may
-  sleep after inactivity.
-- **Docker (any cloud)**:
-  ```dockerfile
-  FROM python:3.11-slim
-  WORKDIR /app
-  COPY . .
-  RUN pip install --no-cache-dir -r requirements.txt
-  EXPOSE 8501
-  CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
-  ```
-  Build with `docker build -t athlete-analytics .`, run with
-  `docker run -p 8501:8501 athlete-analytics`, then push the image to any container
-  host (Fly.io, Google Cloud Run, AWS App Runner, Azure Container Apps).
+### Deployment Flow
 
-## Retraining on new data
+```text
+GitHub Repository
+       ↓
+Streamlit Community Cloud
+       ↓
+Select app.py
+       ↓
+Install requirements
+       ↓
+Deploy
+       ↓
+🌐 Public Web Application
+```
 
-Replace `Sports_analytics_file.csv` with an updated export (same column names),
-run `python train_and_pickle.py` again, and commit/push the refreshed `models/`
-folder — the live app will pick up the new models on next redeploy.
+---
 
-## What changed vs. the original script
+## 📌 Example Prediction Flow
 
-- Removed the `input()`-based CLI flow — the Streamlit form replaces it, so the app
-  never blocks waiting for terminal input (which would hang a deployed server).
-- Training happens once, offline, in `train_and_pickle.py`; the app only *loads*
-  pickled models (`st.cache_resource`) and the pre-scored dataset (`st.cache_data`),
-  so predictions in the UI are instant.
-- Matplotlib plots were swapped for interactive Plotly charts (zoom/hover), which
-  render better inside Streamlit.
-- Added a rule-based recommendation display, dataset explorer with filters/CSV
-  export, and a model-performance page with live metrics/feature importance —
-  none of this required changing the underlying modeling logic.
+```text
+New Athlete
+     │
+     ├── Athlete ID
+     ├── Age
+     ├── Weight
+     ├── Training Experience
+     ├── Training Hours
+     ├── VO₂ Max
+     ├── Sprint Speed
+     ├── Reaction Time
+     ├── Strength
+     ├── Sleep
+     └── Recovery Data
+             │
+             ▼
+       Machine Learning
+             │
+       ┌─────┴─────┐
+       ▼           ▼
+   Athlete      Performance
+   Group        Prediction
+                     │
+                     ▼
+              Medal Chance
+                     │
+                     ▼
+             Recommendations
+```
+
+---
+
+## 💡 Recommendations System
+
+The application compares selected athlete measurements with dataset reference values.
+
+If predicted performance is **75% or above**, the application displays:
+
+> **Good performance – maintain current training.**
+
+For lower predicted performance, the system can provide recommendations related to areas such as:
+
+* Training consistency
+* Aerobic fitness
+* Strength training
+* Speed training
+* Reaction-time practice
+* Sleep and recovery
+* Training frequency
+* Cardiovascular fitness
+
+---
+
+## 🔮 Future Enhancements
+
+Possible future improvements include:
+
+* 📱 Mobile-friendly application
+* 📊 Larger real-world athlete datasets
+* 🧠 Additional machine learning algorithms
+* 📈 Athlete performance tracking over time
+* 🏋️ Personalized training plans
+* 📊 Advanced athlete dashboards
+* 🔐 User authentication
+* ☁️ Cloud database integration
+* 📅 Historical performance comparison
+
+---
+
+## ⚠️ Disclaimer
+
+This project is developed for **educational and demonstration purposes**.
+
+The included dataset is a synthetic/demo dataset and the predictions should not be treated as real-world athlete selection or professional sports decisions.
+
+---
+
+## 👨‍💻 Project
+
+### 🏅 Sports Performance Analytics & Athlete Segmentation
+
+**Machine Learning | Python | Streamlit | Data Analytics**
+
+---
+
+### ⭐ If you find this project useful
+
+Consider giving the repository a ⭐ on GitHub!
